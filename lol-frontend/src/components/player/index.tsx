@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './player.scss';
 import store from '../../redux/store';
 import { SET_PLAYER_POSITION } from '../../redux/actions/types/player-types';
-import { SPRITE_HEIGHT, SPRITE_WIDTH, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
+import { SPRITE_HEIGHT, SPRITE_WIDTH, MAP_BOUNDARY_WIDTH, MAP_BOUNDARY_HEIGHT } from '../../constants';
 
 interface IProps {
     position: string[]
@@ -36,11 +36,10 @@ class Player extends Component<IProps>{
         }
     }
 
-    dispatchMove = (direction: string) => {
-        const oldPos = [parseInt(this.props.position[0]), parseInt(this.props.position[1])]
+    dispatchMove = (newPos: number[]) => {
         store.dispatch({
             type: SET_PLAYER_POSITION,
-            payload: this.observeBounds(oldPos, this.getNewPosition(oldPos, direction))
+            payload: newPos
         })
     }
 
@@ -59,10 +58,22 @@ class Player extends Component<IProps>{
         }
     }
 
-    observeBounds = (oldPos: number[], newPos: number[]): number[] => {
-        return ( newPos[0] >= 0 && newPos[0] <= MAP_WIDTH ) &&
-               ( newPos[1] >=0 && newPos[1] <= MAP_HEIGHT)
-               ? newPos : oldPos
+    observeBounds = (oldPos: number[], newPos: number[]): boolean => {
+        return ( newPos[0] >= 0 && newPos[0] <= MAP_BOUNDARY_WIDTH ) &&
+               ( newPos[1] >=0 && newPos[1] <= MAP_BOUNDARY_HEIGHT)
+    }
+
+    observeImpassable = (oldPos: number[], newPos: number[]): number[] => {
+
+    }
+
+    attemptMove = (direction: string) => {
+        const oldPos = [parseInt(this.props.position[0]), parseInt(this.props.position[1])]
+        const newPos = this.getNewPosition(oldPos, direction)
+
+        if(this.observeBounds(oldPos, newPos) && this.observeImpassable(oldPos, newPos)) {
+
+        }
     }
 
     public render() {
