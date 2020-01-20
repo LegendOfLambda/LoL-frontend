@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './player.scss';
 import store from '../../redux/store';
 import { SET_PLAYER_POSITION } from '../../redux/actions/types/player-types';
-import { SPRITE_HEIGHT, SPRITE_WIDTH } from '../../constants';
+import { SPRITE_HEIGHT, SPRITE_WIDTH, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
 
 interface IProps {
     position: string[]
@@ -37,26 +37,32 @@ class Player extends Component<IProps>{
     }
 
     dispatchMove = (direction: string) => {
+        const oldPos = [parseInt(this.props.position[0]), parseInt(this.props.position[1])]
         store.dispatch({
             type: SET_PLAYER_POSITION,
-            payload: this.getNewPosition(direction)
+            payload: this.observeBounds(oldPos, this.getNewPosition(oldPos, direction))
         })
     }
 
-    getNewPosition = (direction: string): number[] => {
-        const oldPos = this.props.position;
+    getNewPosition = (oldPos:number[], direction: string): number[] => {
         switch(direction) {
             case 'WEST':
-                return [(parseInt(oldPos[0]))-SPRITE_WIDTH, parseInt(oldPos[1])]
+                return [oldPos[0]-SPRITE_WIDTH, oldPos[1]]
             case 'EAST':
-                return [parseInt(oldPos[0])+SPRITE_WIDTH, parseInt(oldPos[1])]
+                return [oldPos[0]+SPRITE_WIDTH, oldPos[1]]
             case 'SOUTH':
-                return [parseInt(oldPos[0]), parseInt(oldPos[1])+SPRITE_HEIGHT]
+                return [oldPos[0], oldPos[1]+SPRITE_HEIGHT]
             case 'NORTH':
-                return [parseInt(oldPos[0]), parseInt(oldPos[1])-SPRITE_HEIGHT]
+                return [oldPos[0], oldPos[1]-SPRITE_HEIGHT]
             default:
-                return [parseInt(oldPos[0]), parseInt(oldPos[1])]
+                return [oldPos[0], oldPos[1]]
         }
+    }
+
+    observeBounds = (oldPos: number[], newPos: number[]): number[] => {
+        return ( newPos[0] >= 0 && newPos[0] <= MAP_WIDTH ) &&
+               ( newPos[1] >=0 && newPos[1] <= MAP_HEIGHT)
+               ? newPos : oldPos
     }
 
     public render() {
@@ -65,7 +71,6 @@ class Player extends Component<IProps>{
             <div
                 className='player'
                 style={{
-                    border: '1px solid red',
                     position: 'absolute',
                     top: this.props.position[1],
                     left: this.props.position[0],
