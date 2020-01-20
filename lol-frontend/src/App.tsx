@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss';
-import Main from './components/main';
+import World from './components/world';
 
-const App: React.FC = () => {
+const App: React.SFC<{}> = () => {
   return (
     <div className="App">
-      <Main />
+      <World />
     </div>
   );
 }
