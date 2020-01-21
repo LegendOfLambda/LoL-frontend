@@ -13,7 +13,7 @@ const World = (props: IProps) => {
     return (
         <div className='world'>
             <Map tiles={props.tiles} />
-            <Player position={[]} />
+            <Player tiles={[]} position={[]} />
         </div>
     )
 }

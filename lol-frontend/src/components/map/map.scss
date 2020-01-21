@@ -9,12 +9,12 @@
 
 .row {
     display: flex;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
     // border-bottom: 1px solid black;
 }
 
 .tile {
-    // border-right: 1px solid black;
+    width: 28px;
 }
 
 .grass {
