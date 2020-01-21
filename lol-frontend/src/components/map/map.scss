@@ -1,8 +1,30 @@
 .map {
     position: relative;
     width: 800px;
-    height: 455px;
+    height: 420px;
     background-color: green;
     top: 0px;
     left: 0px;
+}
+
+.row {
+    display: flex;
+    // justify-content: space-evenly;
+    // border-bottom: 1px solid black;
+}
+
+.tile {
+    width: 28px;
+}
+
+.grass {
+    background-color: green;
+}
+
+.rock {
+    background-color: grey;
+}
+
+.tree {
+    background-color: burlywood;
 }

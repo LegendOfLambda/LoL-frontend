@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import './player.scss';
 import store from '../../redux/store';
 import { SET_PLAYER_POSITION } from '../../redux/actions/types/player-types';
-import { SPRITE_HEIGHT, SPRITE_WIDTH, MAP_WIDTH, MAP_HEIGHT } from '../../constants';
+import { SPRITE_HEIGHT, SPRITE_WIDTH, MAP_BOUNDARY_WIDTH, MAP_BOUNDARY_HEIGHT } from '../../constants';
 
 interface IProps {
-    position: string[]
+    position: string[];
+    tiles: Array<Array<number>>
 }
 
 class Player extends Component<IProps>{
@@ -24,23 +25,22 @@ class Player extends Component<IProps>{
 
         switch(e.keyCode) {
             case 37:
-                return this.dispatchMove('WEST')
+                return this.attemptMove('WEST')
             case 38:
-                return this.dispatchMove('NORTH')
+                return this.attemptMove('NORTH')
             case 39:
-                return this.dispatchMove('EAST')
+                return this.attemptMove('EAST')
             case 40:
-                return this.dispatchMove('SOUTH')
+                return this.attemptMove('SOUTH')
             default:
                 return console.log(e.keyCode)
         }
     }
 
-    dispatchMove = (direction: string) => {
-        const oldPos = [parseInt(this.props.position[0]), parseInt(this.props.position[1])]
+    dispatchMove = (newPos: number[]) => {
         store.dispatch({
             type: SET_PLAYER_POSITION,
-            payload: this.observeBounds(oldPos, this.getNewPosition(oldPos, direction))
+            payload: newPos
         })
     }
 
@@ -59,10 +59,26 @@ class Player extends Component<IProps>{
         }
     }
 
-    observeBounds = (oldPos: number[], newPos: number[]): number[] => {
-        return ( newPos[0] >= 0 && newPos[0] <= MAP_WIDTH ) &&
-               ( newPos[1] >=0 && newPos[1] <= MAP_HEIGHT)
-               ? newPos : oldPos
+    observeBounds = (oldPos: number[], newPos: number[]): boolean => {
+        return ( newPos[0] >= 0 && newPos[0] <= MAP_BOUNDARY_WIDTH ) &&
+               ( newPos[1] >=0 && newPos[1] <= MAP_BOUNDARY_HEIGHT)
+    }
+
+    observeImpassable = (oldPos: number[], newPos: number[]): boolean => {
+        const tile = this.props.tiles;
+        const y = newPos[1] / SPRITE_HEIGHT
+        const x = newPos[0] / SPRITE_WIDTH
+        const nextTile = tile[y][x]
+        return nextTile < 5
+    }
+
+    attemptMove = (direction: string) => {
+        const oldPos = [parseInt(this.props.position[0]), parseInt(this.props.position[1])]
+        const newPos = this.getNewPosition(oldPos, direction)
+
+        if(this.observeBounds(oldPos, newPos) && this.observeImpassable(oldPos, newPos)) {
+            this.dispatchMove(newPos);
+        }
     }
 
     public render() {
@@ -86,6 +102,7 @@ class Player extends Component<IProps>{
 
 const mstp = (state: AppState) => ({
     position: state.player.position,
+    tiles: state.map.tiles
 })
 
 export default connect(mstp, null)(Player)
