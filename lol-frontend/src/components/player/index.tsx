@@ -61,7 +61,8 @@ class Player extends Component<IProps>{
                 position: newPos,
                 direction: direction,
                 spriteLocation: location,
-                walkIndex: walkIndex
+                walkIndex: walkIndex,
+                level: 0
             }
         })
     }

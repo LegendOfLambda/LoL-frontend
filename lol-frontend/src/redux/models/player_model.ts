@@ -1,6 +1,14 @@
 export interface PlayerState {
-    name: string;
+    details: PlayerInfo;
     geo: PlayerLocation;
+}
+
+export interface PlayerInfo {
+    name: string;
+    hp: number;
+    str: number;
+    def: number;
+    stamina: number;
 }
 
 export interface PlayerLocation {
@@ -8,4 +16,5 @@ export interface PlayerLocation {
     spriteLocation: string;
     direction: string;
     walkIndex: number;
+    level: number;
 }
