@@ -23,7 +23,8 @@ const World = (props: IProps) => {
                     position: [],
                     spriteLocation: '',
                     direction: '',
-                    walkIndex: 0
+                    walkIndex: 0,
+                    level: 0
                 }}
                 tiles={[]}
             />

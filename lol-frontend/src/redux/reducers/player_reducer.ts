@@ -2,17 +2,24 @@ import { PlayerState } from '../models/player_model';
 
 import {
     PlayerActionTypes,
-    SET_PLAYER_NAME,
-    MOVE_PLAYER
+    MOVE_PLAYER,
+    SET_PLAYER_DATA
 } from '../actions/types/player-types';
 
 const initialState: PlayerState = {
-    name: '',
+    details: {
+        name: 'Link',
+        hp: 5,
+        str: 10,
+        def: 10,
+        stamina: 10
+    },
     geo: {
         position: [0, 0],
         spriteLocation: '0px -32px',
         direction: 'EAST',
-        walkIndex: 0
+        walkIndex: 0,
+        level: 0
     }
 }
 
@@ -22,10 +29,10 @@ export function playerReducer(
 ): PlayerState {
     switch(action.type) {
 
-        case SET_PLAYER_NAME:
+        case SET_PLAYER_DATA:
             return {
                 ...state,
-                name: action.payload
+                details: action.payload
             }
 
         case MOVE_PLAYER:

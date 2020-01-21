@@ -1,14 +1,14 @@
 import {
-    SET_PLAYER_NAME,
+    SET_PLAYER_DATA,
     PlayerActionTypes,
     MOVE_PLAYER,
 } from './types/player-types';
-import { PlayerLocation } from '../models/player_model';
+import { PlayerLocation, PlayerInfo } from '../models/player_model';
 
-export function setName(newName: string): PlayerActionTypes {
+export function setPlayerData(newPlayer: PlayerInfo): PlayerActionTypes {
     return {
-        type: SET_PLAYER_NAME,
-        payload: newName
+        type: SET_PLAYER_DATA,
+        payload: newPlayer
     }
 }
 
