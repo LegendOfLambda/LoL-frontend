@@ -11,7 +11,8 @@ const initialState: PlayerState = {
     geo: {
         position: [0, 0],
         spriteLocation: '0px -32px',
-        direction: 'EAST'
+        direction: 'EAST',
+        walkIndex: 0
     }
 }
 

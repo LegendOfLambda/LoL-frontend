@@ -7,4 +7,5 @@ export interface PlayerLocation {
     position: number[];
     spriteLocation: string;
     direction: string;
+    walkIndex: number;
 }

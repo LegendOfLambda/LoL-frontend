@@ -40,13 +40,14 @@ class Player extends Component<IProps>{
     }
 
     // dispatches the new position to the redux store
-    dispatchMove = (location: string, direction: string, newPos: number[]) => {
+    dispatchMove = (location: string, direction: string, newPos: number[], walkIndex: number) => {
         store.dispatch({
             type: MOVE_PLAYER,
             payload: {
                 position: newPos,
                 direction: direction,
-                spriteLocation: location
+                spriteLocation: location,
+                walkIndex: walkIndex
             }
         })
     }
@@ -89,28 +90,34 @@ class Player extends Component<IProps>{
         const newPos = this.getNewPosition(oldPos, direction)
 
         if(this.observeBounds(oldPos, newPos) && this.observeImpassable(oldPos, newPos)) {
-            const location = this.getSpriteLocation(direction)
-            this.dispatchMove(location, direction, newPos);
+            const walkIndex = this.getWalkIndex()
+            const location = this.getSpriteLocation(direction, walkIndex)
+            this.dispatchMove(location, direction, newPos, walkIndex);
         }
     }
 
-    getSpriteLocation = (direction: string) => {
+    getSpriteLocation = (direction: string, walkIndex: number) => {
         switch(direction) {
             case 'NORTH':
-                return '0px 0px'
+                return `${24*walkIndex}px 0px`
 
             case 'EAST':
-                return '0px -32px'
+                return `${24*walkIndex}px -32px`
 
             case 'SOUTH':
-                return '0px 64px'
+                return `${24*walkIndex}px 64px`
 
             case 'WEST':
-                return '0px 32px'
+                return `${24*walkIndex}px 32px`
 
             default:
                 return ''
         }
+    }
+
+    getWalkIndex = () => {
+        const currentWalkIndex = this.props.geo.walkIndex
+        return currentWalkIndex >= 11 ? 0 : currentWalkIndex + 1
     }
 
     public render() {
