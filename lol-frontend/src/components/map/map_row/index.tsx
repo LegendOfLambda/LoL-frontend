@@ -15,7 +15,7 @@ const MapRow = (props: IProps) => {
                 width: MAP_TRUE_WIDTH,
                 height: SPRITE_HEIGHT
             }}>
-            {props.tiles.map(tile => <MapTile value={tile} />)}
+            {props.tiles.map((tile, index) => <MapTile key={index} value={tile} />)}
         </div>
     )
 }

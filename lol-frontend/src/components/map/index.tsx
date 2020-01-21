@@ -10,7 +10,7 @@ class Map extends Component<IProps> {
     public render() {
         return(
             <div className='map'>
-                {this.props.tiles.map( row => <MapRow tiles={row} />)}
+                {this.props.tiles.map( (row, index) => <MapRow key={index} tiles={row} />)}
             </div>
         )
     }

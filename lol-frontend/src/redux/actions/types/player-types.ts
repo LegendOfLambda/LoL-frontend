@@ -1,16 +1,18 @@
+import { PlayerLocation } from "../../models/player_model";
+
 export const SET_PLAYER_NAME = 'SET PLAYER NAME';
-export const SET_PLAYER_POSITION = 'SET_PLAYER_POSITION';
+export const MOVE_PLAYER = 'MOVE_PLAYER';
 
 interface SetPlayerNameAction {
     type: typeof SET_PLAYER_NAME;
     payload: string;
 }
 
-interface SetPlayerPositionAction {
-    type: typeof SET_PLAYER_POSITION;
-    payload: number[]
+interface MovePlayerAction {
+    type: typeof MOVE_PLAYER;
+    payload: PlayerLocation
 }
 
 export type PlayerActionTypes =
     SetPlayerNameAction |
-    SetPlayerPositionAction
+    MovePlayerAction
