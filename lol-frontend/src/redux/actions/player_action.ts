@@ -1,8 +1,9 @@
 import {
     SET_PLAYER_NAME,
     PlayerActionTypes,
-    SET_PLAYER_POSITION
+    MOVE_PLAYER,
 } from './types/player-types';
+import { PlayerLocation } from '../models/player_model';
 
 export function setName(newName: string): PlayerActionTypes {
     return {
@@ -11,9 +12,9 @@ export function setName(newName: string): PlayerActionTypes {
     }
 }
 
-export function setPosition(newPosition: number[]): PlayerActionTypes {
+export function MovePlayer(newPosition: PlayerLocation): PlayerActionTypes {
     return {
-        type: SET_PLAYER_POSITION,
+        type: MOVE_PLAYER,
         payload: newPosition
     }
 }
