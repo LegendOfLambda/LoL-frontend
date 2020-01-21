@@ -1,7 +1,12 @@
 import React from 'react';
-import MapTile from '../map_tile';
+
 import '../map.scss';
-import { MAP_TRUE_WIDTH, SPRITE_HEIGHT } from '../../../constants';
+import MapTile from '../map_tile';
+
+import {
+    MAP_TRUE_WIDTH,
+    SPRITE_HEIGHT
+} from '../../../constants';
 
 interface IProps {
     tiles: Array<number>
