@@ -1,12 +1,21 @@
 import React, {Component} from 'react';
-import walkSprite from '../../assetts/link1.png';
-import { AppState } from '../../redux';
 import { connect } from 'react-redux';
-import './player.scss';
+
 import store from '../../redux/store';
+import { AppState } from '../../redux';
 import { MOVE_PLAYER } from '../../redux/actions/types/player-types';
-import { SPRITE_HEIGHT, SPRITE_WIDTH, MAP_BOUNDARY_WIDTH, MAP_BOUNDARY_HEIGHT } from '../../constants';
 import { PlayerLocation } from '../../redux/models/player_model';
+
+import './player.scss';
+import walkSprite from '../../assetts/link1.png';
+
+import {
+    SPRITE_HEIGHT,
+    SPRITE_WIDTH,
+    MAP_BOUNDARY_WIDTH,
+    MAP_BOUNDARY_HEIGHT
+} from '../../constants';
+
 
 interface IProps {
     tiles: Array<Array<number>>;
@@ -40,7 +49,12 @@ class Player extends Component<IProps>{
     }
 
     // dispatches the new position to the redux store
-    dispatchMove = (location: string, direction: string, newPos: number[], walkIndex: number) => {
+    dispatchMove = (
+        location: string,
+        direction: string,
+        newPos: number[],
+        walkIndex: number
+    ) => {
         store.dispatch({
             type: MOVE_PLAYER,
             payload: {
@@ -96,6 +110,7 @@ class Player extends Component<IProps>{
         }
     }
 
+    // determines the portion of the sprite sheet to render based on the direction and walk index
     getSpriteLocation = (direction: string, walkIndex: number) => {
         switch(direction) {
             case 'NORTH':
@@ -115,10 +130,13 @@ class Player extends Component<IProps>{
         }
     }
 
+    // determines whether or not we have reached the end of the sprite sheet,
+    // if not it will increase the walk index by one
     getWalkIndex = () => {
         const currentWalkIndex = this.props.geo.walkIndex
         return currentWalkIndex >= 11 ? 0 : currentWalkIndex + 1
     }
+
 
     public render() {
         const { position, spriteLocation } = this.props.geo
