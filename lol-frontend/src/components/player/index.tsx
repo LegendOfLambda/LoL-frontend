@@ -4,12 +4,13 @@ import { AppState } from '../../redux';
 import { connect } from 'react-redux';
 import './player.scss';
 import store from '../../redux/store';
-import { SET_PLAYER_POSITION } from '../../redux/actions/types/player-types';
+import { MOVE_PLAYER } from '../../redux/actions/types/player-types';
 import { SPRITE_HEIGHT, SPRITE_WIDTH, MAP_BOUNDARY_WIDTH, MAP_BOUNDARY_HEIGHT } from '../../constants';
+import { PlayerLocation } from '../../redux/models/player_model';
 
 interface IProps {
-    position: string[];
-    tiles: Array<Array<number>>
+    tiles: Array<Array<number>>;
+    geo: PlayerLocation;
 }
 
 class Player extends Component<IProps>{
@@ -20,6 +21,7 @@ class Player extends Component<IProps>{
         })
     }
 
+    // checks the key that was pressed and attempts a move in that direction
     handleKeyDown = (e: KeyboardEvent) => {
         e.preventDefault();
 
@@ -37,13 +39,19 @@ class Player extends Component<IProps>{
         }
     }
 
-    dispatchMove = (newPos: number[]) => {
+    // dispatches the new position to the redux store
+    dispatchMove = (location: string, direction: string, newPos: number[]) => {
         store.dispatch({
-            type: SET_PLAYER_POSITION,
-            payload: newPos
+            type: MOVE_PLAYER,
+            payload: {
+                position: newPos,
+                direction: direction,
+                spriteLocation: location
+            }
         })
     }
 
+    // determines the new position of the sprite
     getNewPosition = (oldPos:number[], direction: string): number[] => {
         switch(direction) {
             case 'WEST':
@@ -59,11 +67,13 @@ class Player extends Component<IProps>{
         }
     }
 
+    // checks to make sure the sprite is within the map bounds
     observeBounds = (oldPos: number[], newPos: number[]): boolean => {
         return ( newPos[0] >= 0 && newPos[0] <= MAP_BOUNDARY_WIDTH ) &&
                ( newPos[1] >=0 && newPos[1] <= MAP_BOUNDARY_HEIGHT)
     }
 
+    // checks the next tile to see if it is a passable object
     observeImpassable = (oldPos: number[], newPos: number[]): boolean => {
         const tile = this.props.tiles;
         const y = newPos[1] / SPRITE_HEIGHT
@@ -72,26 +82,48 @@ class Player extends Component<IProps>{
         return nextTile < 5
     }
 
+    // checks to see if the sprite will be within map bounds and that it is not walking into an impassable object
     attemptMove = (direction: string) => {
-        const oldPos = [parseInt(this.props.position[0]), parseInt(this.props.position[1])]
+        const { position } = this.props.geo
+        const oldPos = [position[0], position[1]]
         const newPos = this.getNewPosition(oldPos, direction)
 
         if(this.observeBounds(oldPos, newPos) && this.observeImpassable(oldPos, newPos)) {
-            this.dispatchMove(newPos);
+            const location = this.getSpriteLocation(direction)
+            this.dispatchMove(location, direction, newPos);
+        }
+    }
+
+    getSpriteLocation = (direction: string) => {
+        switch(direction) {
+            case 'NORTH':
+                return '0px 0px'
+
+            case 'EAST':
+                return '0px -32px'
+
+            case 'SOUTH':
+                return '0px 64px'
+
+            case 'WEST':
+                return '0px 32px'
+
+            default:
+                return ''
         }
     }
 
     public render() {
-
+        const { position, spriteLocation } = this.props.geo
         return (
             <div
                 className='player'
                 style={{
                     position: 'absolute',
-                    top: this.props.position[1],
-                    left: this.props.position[0],
+                    top: position[1] || 0,
+                    left: position[0] || 0,
                     backgroundImage: `url('${walkSprite}')`,
-                    backgroundPosition: '',
+                    backgroundPosition: `${spriteLocation}`,
                     width: '25px',
                     height: '35px'
                 }}>
@@ -101,8 +133,8 @@ class Player extends Component<IProps>{
 }
 
 const mstp = (state: AppState) => ({
-    position: state.player.position,
-    tiles: state.map.tiles
+    geo: state.player.geo,
+    tiles: state.map.tiles,
 })
 
 export default connect(mstp, null)(Player)

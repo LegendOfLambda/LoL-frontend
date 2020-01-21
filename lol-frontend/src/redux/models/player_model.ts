@@ -1,5 +1,10 @@
 export interface PlayerState {
     name: string;
-    position: number[];
+    geo: PlayerLocation;
+}
 
+export interface PlayerLocation {
+    position: number[];
+    spriteLocation: string;
+    direction: string;
 }
