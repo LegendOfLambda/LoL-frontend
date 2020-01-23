@@ -35,8 +35,7 @@
 }
 
 .mage-wrap {
-    animation-delay: 3s;
-    animation: fade_in 5s linear;
+    animation: fade_in 3s linear;
     width: 95%;
     height: auto;
     margin: 0 auto;
@@ -49,7 +48,6 @@
     padding: 4px;
 
     img {
-        animation-delay: 8s;
         animation: fade_in 4s linear;
         margin-right: 20px;
         width: 200px;
@@ -65,6 +63,14 @@
 }
 
 .no_show {
+    display: none;
+}
+
+.show-form {
+    display: flex;
+}
+
+.no_form {
     display: none;
 }
 
