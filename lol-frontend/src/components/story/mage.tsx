@@ -8,6 +8,9 @@ interface IProps {
 }
 
 const Mage = (props: IProps) => {
+    const [d_index, setDIndex] = useState(0);
+    const [showForm, setShowForm] = useState(false);
+
     const dialogue = [
         'Oh god, not another "ADVENTURER"..!',
         'Let me guess, you think you can finally save the princess?...',
@@ -17,26 +20,24 @@ const Mage = (props: IProps) => {
         'and they were WAY tougher looking than...',
         '*You watch as the mage looks you up and down*',
         '...you. Hahaha but nevermind, just tell me your name kid',
-        'so I can shrink you down and send you in.'
+        'so I can shrink you down and send you in.',
     ]
-    const [d_index, setDIndex] = useState(0);
-    const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
         if(d_index < dialogue.length) {
             setTimeout(() => {
                 setDIndex(d_index + 1)
-            }, 5000)
-        } else {
-            setShowForm(true);
-        }
+            }, 1000)
+        } else setShowForm(true);
+
     }, [d_index, dialogue])
 
     return (
-        <div className={props.show && props.show ?
-                        'mage-wrap' : 'no_show'}>
+        <div className={props.show && props.show ?'mage-wrap' : 'no_show'}>
             <img src={mage} alt='mage' />
-            <p className={showForm ? 'no_show' : 'chat'}>{dialogue[d_index]}</p>
+            <p className={showForm ? 'no_show' : 'chat'}>
+                {dialogue[d_index]}
+            </p>
             <NameForm show={showForm} />
         </div>
     )

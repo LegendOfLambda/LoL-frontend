@@ -5,10 +5,10 @@ export interface PlayerState {
 
 export interface PlayerInfo {
     name: string;
-    hp: number;
-    str: number;
-    def: number;
-    stamina: number;
+    hp?: number;
+    str?: number;
+    def?: number;
+    stamina?: number;
 }
 
 export interface PlayerLocation {
