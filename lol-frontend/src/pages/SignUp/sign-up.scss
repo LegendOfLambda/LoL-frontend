@@ -1,0 +1,52 @@
+@import "../../sass-shared/variables.scss";
+
+.signup-page {
+  background-image: url("../../assetts/signup.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-position-y: 70%;
+
+  h2 {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  form {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    label {
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+    }
+    input {
+      margin: 15px 0;
+      width: 500px;
+      padding: 7.5px;
+      border: 1px solid lightgray;
+    }
+    button {
+      color: #fff;
+      font-size: 1.6rem;
+      font-family: "Trade Winds", cursive;
+      background: $red;
+      width: 520px;
+      padding: 10px;
+      text-align: center;
+      border: 1px solid lightgray;
+    }
+    p {
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-shadow: 1px 1px #000;
+      color: #fff;
+      span {
+        color: $red;
+      }
+    }
+  }
+}
