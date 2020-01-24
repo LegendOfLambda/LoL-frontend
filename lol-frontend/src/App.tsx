@@ -3,8 +3,6 @@ import "./App.scss";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  RouteComponentProps
 } from "react-router-dom";
 import World from "./components/world";
 import PlayerInformation from "./components/player-info";
