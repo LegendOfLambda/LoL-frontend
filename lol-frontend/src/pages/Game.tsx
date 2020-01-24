@@ -1,5 +1,4 @@
 import React from "react";
-import { RouteComponentProps } from "react-router-dom";
 
 import World from "../components/world";
 import PlayerInformation from "../components/player-info";

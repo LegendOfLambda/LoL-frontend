@@ -1,0 +1,132 @@
+.step-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+}
+
+.headline {
+    width: 100%;
+
+    h2 {
+        animation: fade_in 4s linear;
+        width: 100%;
+        margin: 40px auto 20px;
+        text-align: center;
+        font-size: 30px;
+    }
+}
+
+.sprite-wrap {
+    width: 20%;
+    margin: 0 auto;
+    height: 500px;
+    position: relative;
+}
+
+.sprite {
+    animation: nudge 1s linear;
+    position: absolute;
+    top: 300px;
+    left: 0;
+    width: 115px;
+    height: 115px;
+}
+
+.mage-wrap {
+    animation: fade_in 2s linear;
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    border: 4px solid #fff;
+    border-radius: 4px;
+    padding: 4px;
+
+    img {
+        animation: fade_in 3s linear;
+        margin-right: 20px;
+        width: 200px;
+    }
+
+    p {
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .15em;
+        animation-delay: 8s;
+        -moz-animation-delay: 5s;
+        animation: fade_in 4s linear;
+    }
+}
+
+.no_show {
+    display: none;
+}
+
+.name-form {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+
+    h3 {
+        font-size: 22px;
+    }
+}
+
+.no_form {
+    display: none;
+}
+
+.input-field {
+    background-color: none;
+    color: #fff;
+    width: 350px;
+    margin: 5px auto 0;
+    border-bottom: 1px solid white;
+    justify-self: center;
+
+    input {
+        width: 350px;
+        height: 30px;
+        border: none;
+        padding: 2px 5px;
+        background-color: transparent;
+        color: #fff;
+        font-size: 16px;
+        font-family: "PressStart2P";
+        text-align: center;
+    }
+}
+
+input:focus {
+    outline: none;
+}
+
+@keyframes nudge {
+    from {
+        transform: translateY(0);
+        top: 0px;
+    }
+    to {
+        transform: translateY(150px);
+        top: 150px;
+    }
+}
+
+@keyframes fade_in {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100%; }
+}
