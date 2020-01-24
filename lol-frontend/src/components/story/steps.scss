@@ -54,14 +54,16 @@
     }
 
     p {
-        overflow: hidden;
-        white-space: nowrap;
         margin: 0 auto;
-        letter-spacing: .15em;
         animation-delay: 8s;
         -moz-animation-delay: 5s;
         animation: fade_in 4s linear;
     }
+}
+
+.chat {
+    display: block;
+    color: #fff;
 }
 
 .no_show {
@@ -110,6 +112,36 @@ input:focus {
     outline: none;
 }
 
+.step-two {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 16px;
+
+    p {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+.spin-wrap {
+    width: 20px;
+    margin: 400px auto;
+    height: 20px;
+    position: relative;
+    animation: spin 1s 5 linear;
+
+}
+
+.spinning-sprite {
+    animation: scale 5s ease-out forwards;
+    position: absolute;
+    top: 0;
+    left: -50px;
+    width: 115px;
+    height: 115px;
+}
+
 @keyframes nudge {
     from {
         transform: translateY(0);
@@ -126,7 +158,18 @@ input:focus {
     to { opacity: 1 }
 }
 
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100%; }
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes scale {
+    from { transform: scale(1) }
+    to {
+        transform: scale(0);
+    }
 }
