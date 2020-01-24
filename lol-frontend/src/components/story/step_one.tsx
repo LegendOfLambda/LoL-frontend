@@ -11,7 +11,7 @@ const StepOne = () => {
     useEffect(() => {
         setTimeout(() => {
             setShowMage(true)
-        }, 3000)
+        }, 5000)
     }, [])
 
     return(
