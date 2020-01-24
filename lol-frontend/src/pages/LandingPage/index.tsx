@@ -2,25 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import GooglePlay from "../assetts/google-play.png";
-import AppleStore from "../assetts/apple-store.png";
-import Lambda from "../assetts/lambda.png";
+import GooglePlay from "../../assetts/google-play.png";
+import AppleStore from "../../assetts/apple-store.png";
+import NavBar from "../../components/navigation";
 
-const TopBar = styled.div`
-  display: flex;
-  font-family: "Trade Winds", cursive;
-  padding: 2%;
-  margin-left: 7%;
-  justify-content: space-between;
-  align-items: center;
-
-  @media (max-width: 1200px) {
-    width: 100%;
-    flex-direction: column;
-    margin-left: 0;
-    margin: 0 auto;
-  }
-`;
+import "./landing-page.scss";
 
 const HeadingContainer = styled.div`
   padding: 2%;
@@ -70,24 +56,7 @@ const AppButton = styled.img`
 function LandingPage() {
   return (
     <div className="landing-page">
-      <TopBar>
-        <h1>
-          Legend of Lambda
-          <img src={Lambda} alt="Lambda School logo" />
-        </h1>
-        <nav
-          style={{
-            width: "45%",
-            fontSize: ".9rem",
-            textShadow: "1px 1px #000"
-          }}
-        >
-          <Link to="/story">Story</Link>
-          <Link to="/featured">Features</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/register">Sign up</Link>
-        </nav>
-      </TopBar>
+      <NavBar />
       <HeadingContainer>
         <HeadingContent>
           <div className="sub-content">
