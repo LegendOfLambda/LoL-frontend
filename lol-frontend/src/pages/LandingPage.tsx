@@ -32,7 +32,6 @@ const HeadingContainer = styled.div`
 
 const HeadingContent = styled.div`
   font-family: "Seymour One", sans-serif;
-  font-size: 1.3rem;
   margin-top: 5%;
   margin-left: 3%;
   width: 47.5%;
@@ -56,7 +55,6 @@ const AppButton = styled.img`
   }
   &:hover {
     cursor: pointer;
-    opacity: 0.9;
   }
   &:last-child {
     height: 150%;
