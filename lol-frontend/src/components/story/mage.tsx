@@ -11,7 +11,7 @@ const Mage = (props: IProps) => {
     const dialogue = [
         'Oh god, not another "ADVENTURER"..!',
         'Let me guess, you think you can finally save the princess?...',
-        'HAHAHAHA.... thanks, I needed a good laugh',
+        'HAHAHAHAHAHAHAHAHHHAAHAHA.....',
         'Look kid, plenty of "Adventurers" have come through here',
         'thinking they were tough stuff and never make it to the princess...',
         'and they were WAY tougher looking than...',
@@ -26,19 +26,18 @@ const Mage = (props: IProps) => {
         if(d_index < dialogue.length) {
             setTimeout(() => {
                 setDIndex(d_index + 1)
-            }, 6000)
+            }, 5000)
         } else {
             setShowForm(true);
         }
     }, [d_index, dialogue])
 
     return (
-        <div
-            className={props.show && props.show ?
+        <div className={props.show && props.show ?
                         'mage-wrap' : 'no_show'}>
             <img src={mage} alt='mage' />
-            <p>{dialogue[d_index]}</p>
-            <NameForm show={showForm}/>
+            <p className={showForm ? 'no_show' : 'chat'}>{dialogue[d_index]}</p>
+            <NameForm show={showForm} />
         </div>
     )
 }

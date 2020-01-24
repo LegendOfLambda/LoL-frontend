@@ -35,7 +35,7 @@
 }
 
 .mage-wrap {
-    animation: fade_in 3s linear;
+    animation: fade_in 2s linear;
     width: 95%;
     height: auto;
     margin: 0 auto;
@@ -48,7 +48,7 @@
     padding: 4px;
 
     img {
-        animation: fade_in 4s linear;
+        animation: fade_in 3s linear;
         margin-right: 20px;
         width: 200px;
     }
@@ -58,7 +58,9 @@
         white-space: nowrap;
         margin: 0 auto;
         letter-spacing: .15em;
-        animation: fade_in 8s linear;
+        animation-delay: 8s;
+        -moz-animation-delay: 5s;
+        animation: fade_in 4s linear;
     }
 }
 
@@ -66,12 +68,46 @@
     display: none;
 }
 
-.show-form {
+.name-form {
     display: flex;
+    flex-direction: column;
+    color: #fff;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+
+    h3 {
+        font-size: 22px;
+    }
 }
 
 .no_form {
     display: none;
+}
+
+.input-field {
+    background-color: none;
+    color: #fff;
+    width: 350px;
+    margin: 5px auto 0;
+    border-bottom: 1px solid white;
+    justify-self: center;
+
+    input {
+        width: 350px;
+        height: 30px;
+        border: none;
+        padding: 2px 5px;
+        background-color: transparent;
+        color: #fff;
+        font-size: 16px;
+        font-family: "PressStart2P";
+        text-align: center;
+    }
+}
+
+input:focus {
+    outline: none;
 }
 
 @keyframes nudge {
