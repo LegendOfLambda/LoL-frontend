@@ -13,8 +13,8 @@ const App: React.SFC<{}> = () => {
     <Router>
       <div className="App">
         <Route exact path="/" component={LandingPage} />
-        <Route path="/intro/1" component={StepOne} />
-        <Route path="/intro/2" component={StepTwo} />
+        <Route exact path="/intro/1" component={StepOne} />
+        <Route exact path="/intro/2" component={StepTwo} />
         <Route path="/play-now" component={Game} />
       </div>
     </Router>
