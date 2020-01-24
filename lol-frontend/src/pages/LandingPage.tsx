@@ -6,18 +6,6 @@ import GooglePlay from "../assetts/google-play.png";
 import AppleStore from "../assetts/apple-store.png";
 import Lambda from "../assetts/lambda.png";
 
-const playButtonStyle = {
-  color: "#fff",
-  background: "#bb1333",
-  border: "1px solid #fff",
-  borderRadius: "10px",
-  boxShadow: "1px 1px 3px #000",
-  textDecoration: "none",
-  margin: "0 auto",
-  textShadow: "1px 1px #000",
-  padding: "1% 2%"
-};
-
 const TopBar = styled.div`
   display: flex;
   font-family: "Trade Winds", cursive;
