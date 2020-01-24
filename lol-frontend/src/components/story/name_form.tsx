@@ -25,7 +25,7 @@ const NameForm = (props: IProps) => {
         if(d_index < dialogue.length-1 && showNext) {
             setTimeout(() => {
                 setDIndex(d_index + 1)
-            }, 2000)
+            }, 5000)
         }
 
         if(d_index === dialogue.length -1) {
