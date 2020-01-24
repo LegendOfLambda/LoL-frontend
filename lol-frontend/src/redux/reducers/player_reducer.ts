@@ -32,7 +32,10 @@ export function playerReducer(
         case SET_PLAYER_DATA:
             return {
                 ...state,
-                details: action.payload
+                details: {
+                    ...state.details,
+                    name: action.payload.name
+                }
             }
 
         case MOVE_PLAYER:

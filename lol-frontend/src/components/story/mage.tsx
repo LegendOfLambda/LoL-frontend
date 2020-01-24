@@ -18,16 +18,17 @@ const Mage = (props: IProps) => {
         'Look kid, plenty of "Adventurers" have come through here',
         'thinking they were tough stuff and never make it to the princess...',
         'and they were WAY tougher looking than...',
-        '*You watch as the mage looks you up and down*',
+        '** You watch as the mage looks you up and down **',
         '...you. Hahaha but nevermind, just tell me your name kid',
         'so I can shrink you down and send you in.',
     ]
 
     useEffect(() => {
         if(d_index < dialogue.length) {
+            let time: number = d_index === 0 ? 7000 : 5000;
             setTimeout(() => {
                 setDIndex(d_index + 1)
-            }, 1000)
+            }, time)
         } else setShowForm(true);
 
     }, [d_index, dialogue])
