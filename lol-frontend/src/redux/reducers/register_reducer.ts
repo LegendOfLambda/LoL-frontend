@@ -7,9 +7,10 @@ import {
 
 const initialState: RegisterInfo = {
   user: {
-    fullName: "",
+    username: "",
     email: "",
-    password: ""
+    password1: "",
+    password2: ""
   }
 };
 

@@ -8,9 +8,10 @@ import { connect } from "react-redux";
 
 function SignUp() {
   const [user, setUser] = useState({
-    fullName: "",
+    username: "",
     email: "",
-    password: ""
+    password1: "",
+    password2: ""
   });
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) =>
@@ -33,8 +34,8 @@ function SignUp() {
         <label>
           Full name
           <input
-            name="fullName"
-            value={user.fullName}
+            name="username"
+            value={user.username}
             onChange={handleChange}
             type="text"
             placeholder="your full name"
@@ -53,11 +54,21 @@ function SignUp() {
         <label>
           Password
           <input
-            name="password"
-            value={user.password}
+            name="password1"
+            value={user.password1}
             onChange={handleChange}
             type="password"
             placeholder="password"
+          />
+        </label>
+        <label>
+          Confirm password
+          <input
+            name="password2"
+            value={user.password2}
+            onChange={handleChange}
+            type="password"
+            placeholder="confirm password"
           />
         </label>
         <button type="submit">BEGIN YOUR ADVENTURE</button>
