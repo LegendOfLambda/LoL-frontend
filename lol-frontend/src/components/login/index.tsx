@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import NavBar from "../../components/navigation";
 
-import "./sign-up.scss";
-
-import { registerUser } from "../../redux/actions/register_actions";
+import "../../pages/SignUp/sign-up.scss";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-function SignUp() {
+const Login = () => {
   const history = useHistory();
   const [user, setUser] = useState({
     username: "",
-    email: "",
-    password1: "",
-    password2: ""
+    password: ""
   });
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) =>
@@ -24,9 +20,9 @@ function SignUp() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    registerUser(user);
+    console.log(user)
 
-    history.push('/intro/1')
+    history.push('/play-now')
   };
 
   return (
@@ -35,51 +31,31 @@ function SignUp() {
       <h2>Create your account now</h2>
       <form onSubmit={handleSubmit} noValidate={true}>
         <label>
-          Full name
+          Username
           <input
             name="username"
             value={user.username}
             onChange={handleChange}
             type="text"
-            placeholder="your full name"
-          />
-        </label>
-        <label>
-          Email
-          <input
-            name="email"
-            value={user.email}
-            onChange={handleChange}
-            type="text"
-            placeholder="your email"
+            placeholder="username"
           />
         </label>
         <label>
           Password
           <input
             name="password1"
-            value={user.password1}
+            value={user.password}
             onChange={handleChange}
             type="password"
             placeholder="password"
           />
         </label>
-        <label>
-          Confirm password
-          <input
-            name="password2"
-            value={user.password2}
-            onChange={handleChange}
-            type="password"
-            placeholder="confirm password"
-          />
-        </label>
-        <button type="submit">BEGIN YOUR ADVENTURE</button>
+        <button type="submit">Login</button>
         <p>
-          Already have an account?
-          <span id='switch-page-link' onClick={() => history.push('/login')}>
-             Sign in.
-          </span>
+          Don't have an account?
+            <span id='switch-page-link' onClick={() => history.push('/register')}>
+                Sign up.
+            </span>
         </p>
       </form>
     </div>
@@ -90,4 +66,4 @@ const mapStateToProps = () => {
   return {};
 };
 
-export default connect(mapStateToProps, { registerUser })(SignUp);
+export default connect(mapStateToProps, null)(Login);

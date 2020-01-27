@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { LandingPage, SignUp, Game } from "./pages/index";
 import StepOne from "./components/story/step_one";
 import StepTwo from "./components/story/step_two";
+import Login from "./components/login";
 
 const App: React.SFC<{}> = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.SFC<{}> = () => {
       <div className="App">
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/register" component={SignUp} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/intro/1" component={StepOne} />
         <Route exact path="/intro/2" component={StepTwo} />
         <Route path="/play-now" component={Game} />

@@ -1,13 +1,12 @@
 @import "../../sass-shared/variables.scss";
 
 .signup-page {
+  width: 100%;
   background-image: url("../../assetts/signup.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
   background-position-y: 70%;
-  width: 100%;
-  overflow-x: hidden;
 
   h2 {
     text-align: center;
@@ -51,12 +50,4 @@
       }
     }
   }
-}
-
-#switch-page-link {
-  padding-left: 10px;
-}
-
-#switch-page-link:hover {
-  cursor: pointer;
 }
