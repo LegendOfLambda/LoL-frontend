@@ -1,0 +1,25 @@
+.output-wrap {
+    border: 4px solid white;
+    border-radius: 3px;
+    color: #fff;
+    width: 350px;
+
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    width: 100%;
+    border-bottom: 2px solid #fff;
+    font-size: 18px;
+}
+
+.content {
+    overflow-y: scroll;
+    height: 475px;
+
+    div {
+        border-bottom: 1px solid #fff;
+    }
+}
