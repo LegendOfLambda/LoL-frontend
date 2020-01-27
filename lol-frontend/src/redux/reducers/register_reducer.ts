@@ -19,12 +19,14 @@ export function playerReducer(
   action: RegisterActionTypes
 ): RegisterInfo {
   switch (action.type) {
+
     case SET_REGISTER_DATA:
       console.log(state);
       return {
         ...state,
         user: action.payload
       };
+
     default:
       return state;
   }

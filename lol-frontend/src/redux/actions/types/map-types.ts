@@ -1,11 +1,11 @@
-import { MapState } from '../../models/map_model';
+import { Room } from '../../models/map_model';
 
-export const ADD_TILES = 'ADD TILES';
+export const SET_ROOM = 'SET_ROOM';
 
-interface AddTilesAction {
-    type: typeof ADD_TILES;
-    payload: MapState;
+interface SetRoomAction {
+    type: typeof SET_ROOM;
+    payload: Room;
 }
 
 export type MapActionTypes =
-    AddTilesAction
+    SetRoomAction

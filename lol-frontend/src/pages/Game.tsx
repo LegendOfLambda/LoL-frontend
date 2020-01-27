@@ -6,7 +6,15 @@ import PlayerInformation from "../components/player-info";
 function Game() {
   return (
     <div className="game">
-      <World tiles={[]} />
+      <World room={{
+          title: 'Dusty Dungeon Entry',
+          description: 'You have entered the dusty dungeon!',
+          n: 0,
+          e: 2,
+          s: 4,
+          w: 0,
+          tiles: []
+      }} />
       <PlayerInformation
         geo={{
           position: [],

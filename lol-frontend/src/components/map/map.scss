@@ -15,14 +15,16 @@
     width: 28px;
 }
 
-.grass {
-    background-color: green;
+.wall {
+    background-image: url('../../assetts/walls.png');
+    background-size: cover;
 }
 
-.rock {
-    background-color: grey;
+.path {
+    background-image: url('../../assetts/floor.jpg');
+    background-size: cover;
 }
 
-.tree {
-    background-color: burlywood;
+.nothing {
+    background-color: black;
 }

@@ -1,12 +1,12 @@
 import {
-    ADD_TILES,
+    SET_ROOM,
     MapActionTypes
 } from './types/map-types';
-import { MapState } from '../models/map_model';
+import { Room } from '../models/map_model';
 
-export function addTiles(newTiles: MapState): MapActionTypes {
+export function addTiles(newTiles: Room): MapActionTypes {
     return {
-        type: ADD_TILES,
+        type: SET_ROOM,
         payload: newTiles
     }
 }

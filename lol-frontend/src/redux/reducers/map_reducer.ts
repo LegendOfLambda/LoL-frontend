@@ -1,13 +1,13 @@
 import { MapState } from '../models/map_model';
-import { tiles } from '../../maps/one';
+import { rooms } from '../../maps/one';
 
 import {
     MapActionTypes,
-    ADD_TILES
+    SET_ROOM
 } from '../actions/types/map-types';
 
 const initialState: MapState = {
-    tiles: tiles
+    rooms: rooms[0]
 }
 
 export function mapReducer(
@@ -15,10 +15,9 @@ export function mapReducer(
     action: MapActionTypes
 ): MapState {
     switch(action.type) {
-        case ADD_TILES:
+        case SET_ROOM:
             return {
-                ...state,
-                tiles: action.payload.tiles
+                rooms: action.payload
             }
         default:
             return state
