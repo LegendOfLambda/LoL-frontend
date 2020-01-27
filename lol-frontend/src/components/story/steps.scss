@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: space-between;
     color: #fff;
+    font-family: "PressStart2P";
 }
 
 .headline {
@@ -58,6 +59,7 @@
         animation-delay: 8s;
         -moz-animation-delay: 5s;
         animation: fade_in 4s linear;
+        font-size: 20px;
     }
 }
 
@@ -130,7 +132,6 @@ input:focus {
     height: 20px;
     position: relative;
     animation: spin 1s 5 linear;
-
 }
 
 .spinning-sprite {
