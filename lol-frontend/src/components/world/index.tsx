@@ -6,18 +6,19 @@ import { AppState } from '../../redux';
 import './world.scss';
 import Player from '../player';
 import Map from '../map';
+import { Room } from '../../redux/models/map_model';
 
 
 
 
 interface IProps {
-    tiles: Array<Array<number>>
+    room: Room
 }
 
 const World = (props: IProps) => {
     return (
         <div className='world'>
-            <Map tiles={props.tiles} />
+            <Map room={props.room} />
             <Player
                 geo={{
                     position: [],
@@ -26,14 +27,14 @@ const World = (props: IProps) => {
                     walkIndex: 0,
                     level: 0
                 }}
-                tiles={[]}
+                room={props.room}
             />
         </div>
     )
 }
 
 const mstp = (state: AppState) => ({
-    tiles: state.map.tiles
+    rooms: state.map.rooms
 })
 
 export default connect(mstp, null)(World)

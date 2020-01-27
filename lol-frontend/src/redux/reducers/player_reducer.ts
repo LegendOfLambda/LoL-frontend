@@ -4,7 +4,8 @@ import {
     PlayerActionTypes,
     MOVE_PLAYER,
     SET_PLAYER_DATA,
-    SET_PLAYER_TOKEN
+    SET_PLAYER_TOKEN,
+    SET_NEW_POSITION
 } from '../actions/types/player-types';
 
 const initialState: PlayerState = {
@@ -19,7 +20,7 @@ const initialState: PlayerState = {
         stamina: 10
     },
     geo: {
-        position: [0, 0],
+        position: [175, 175],
         spriteLocation: '0px -32px',
         direction: 'EAST',
         walkIndex: 0,
@@ -53,6 +54,15 @@ export function playerReducer(
             return {
                 ...state,
                 token: action.payload
+            }
+
+        case SET_NEW_POSITION:
+            return {
+                ...state,
+                geo: {
+                    ...state.geo,
+                    position: action.payload
+                }
             }
 
         default:

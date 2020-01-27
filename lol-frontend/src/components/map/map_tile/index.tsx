@@ -8,12 +8,17 @@ interface IProps {
 const MapTile = (props: IProps) => {
     const getTileSprite = (type: number): string => {
         switch(type) {
-            case 5:
-                return 'rock'
-            case 6:
-                return 'tree'
+            case 0:
+                return 'path'
+
+            case 1:
+                return 'wall'
+
+            case 2:
+                return 'nothing'
+
             default:
-                return 'grass'
+                return 'nothing'
         }
     }
 
