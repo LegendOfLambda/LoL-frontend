@@ -14,7 +14,3 @@ export interface LoginState {
   email: string;
   password: string;
 }
-
-interface Component {
-  component: any;
-}
