@@ -5,8 +5,10 @@ import "./sign-up.scss";
 
 import { registerUser } from "../../redux/actions/register_actions";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function SignUp() {
+  const history = useHistory();
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -23,7 +25,8 @@ function SignUp() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     registerUser(user);
-    console.log(user);
+
+    history.push('/intro/1')
   };
 
   return (

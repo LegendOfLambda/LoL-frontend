@@ -1,18 +1,17 @@
-import { RegisterActionTypes, SET_REGISTER_DATA } from "./types/register-types";
 import { RegisterState } from "../models/register_model";
 
 import axios from "axios";
+import store from "../store";
+import { SET_PLAYER_TOKEN } from "./types/player-types";
 
-export function registerUser(newUser: RegisterState): RegisterActionTypes {
-  Promise.resolve(
-    axios.post(
-      "https://legend-of-lambda.herokuapp.com/api/registration",
+export async function registerUser(newUser: RegisterState) {
+    await axios.post(
+      "https://legend-of-lambda.herokuapp.com/api/registration/",
       newUser
-    )
-  );
-  console.log(newUser);
-  return {
-    type: SET_REGISTER_DATA,
-    payload: newUser
-  };
+    ).then((res) => {
+      store.dispatch({
+        type: SET_PLAYER_TOKEN,
+        payload: res.data
+      })
+    })
 }

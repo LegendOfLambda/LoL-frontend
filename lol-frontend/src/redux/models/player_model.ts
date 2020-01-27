@@ -1,4 +1,5 @@
 export interface PlayerState {
+    token: PlayerToken;
     details: PlayerInfo;
     geo: PlayerLocation;
 }
@@ -17,4 +18,8 @@ export interface PlayerLocation {
     direction: string;
     walkIndex: number;
     level: number;
+}
+
+export interface PlayerToken {
+    key: string;
 }

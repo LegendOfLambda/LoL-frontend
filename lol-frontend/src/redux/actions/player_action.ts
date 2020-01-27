@@ -2,8 +2,9 @@ import {
     SET_PLAYER_DATA,
     PlayerActionTypes,
     MOVE_PLAYER,
+    SET_PLAYER_TOKEN,
 } from './types/player-types';
-import { PlayerLocation, PlayerInfo } from '../models/player_model';
+import { PlayerLocation, PlayerInfo, PlayerToken } from '../models/player_model';
 
 export function setPlayerData(newPlayer: PlayerInfo): PlayerActionTypes {
     return {
@@ -16,5 +17,12 @@ export function MovePlayer(newPosition: PlayerLocation): PlayerActionTypes {
     return {
         type: MOVE_PLAYER,
         payload: newPosition
+    }
+}
+
+export function SetToken(newToken: PlayerToken): PlayerActionTypes {
+    return {
+        type: SET_PLAYER_TOKEN,
+        payload: newToken
     }
 }
