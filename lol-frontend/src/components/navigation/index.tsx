@@ -40,7 +40,7 @@ export default function NavBar() {
       >
         <Link to="/story">Story</Link>
         <Link to="/featured">Features</Link>
-        <Link to="/contact">Contact</Link>
+        <Link to="/login">Login</Link>
         <Link to="/register">Sign up</Link>
       </nav>
     </TopBar>

@@ -38,14 +38,19 @@
       padding: 10px;
       text-align: center;
       border: 1px solid lightgray;
+      cursor: pointer;
     }
     p {
       font-size: 0.9rem;
       font-weight: bold;
       text-shadow: 1px 1px #000;
       color: #fff;
-      span {
+      a {
         color: $red;
+        text-decoration: none;
+        &:hover {
+          opacity: 0.9;
+        }
       }
     }
   }

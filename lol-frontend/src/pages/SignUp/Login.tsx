@@ -3,17 +3,16 @@ import NavBar from "../../components/navigation";
 
 import "./sign-up.scss";
 
-import { registerUser } from "../../redux/actions/register_actions";
+import { loginUser } from "../../redux/actions/register_actions";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-function SignUp() {
+function Login() {
   const history = useHistory();
   const [user, setUser] = useState({
     username: "",
     email: "",
-    password1: "",
-    password2: ""
+    password: ""
   });
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) =>
@@ -24,24 +23,25 @@ function SignUp() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    registerUser(user);
-
-    history.push('/intro/1')
+    loginUser(user);
+    if (localStorage.getItem("token")) {
+      history.push("/intro/1");
+    }
   };
 
   return (
     <div className="signup-page">
       <NavBar />
-      <h2>Create your account now</h2>
+      <h2>Welcome Back</h2>
       <form onSubmit={handleSubmit} noValidate={true}>
         <label>
-          Full name
+          Username
           <input
             name="username"
             value={user.username}
             onChange={handleChange}
             type="text"
-            placeholder="your full name"
+            placeholder="your username"
           />
         </label>
         <label>
@@ -50,33 +50,24 @@ function SignUp() {
             name="email"
             value={user.email}
             onChange={handleChange}
-            type="text"
-            placeholder="your email"
+            type="email"
+            placeholder="email"
           />
         </label>
         <label>
           Password
           <input
             name="password1"
-            value={user.password1}
+            value={user.password}
             onChange={handleChange}
             type="password"
             placeholder="password"
           />
         </label>
-        <label>
-          Confirm password
-          <input
-            name="password2"
-            value={user.password2}
-            onChange={handleChange}
-            type="password"
-            placeholder="confirm password"
-          />
-        </label>
-        <button type="submit">BEGIN YOUR ADVENTURE</button>
+
+        <button type="submit">CONTINUE YOUR ADVENTURE</button>
         <p>
-          Already have an account? <span> Sign in.</span>
+          New to Legend of Lambda? <a href="/register"> Register</a>
         </p>
       </form>
     </div>
@@ -87,4 +78,4 @@ const mapStateToProps = () => {
   return {};
 };
 
-export default connect(mapStateToProps, { registerUser })(SignUp);
+export default connect(mapStateToProps, { loginUser })(Login);
