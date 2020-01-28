@@ -6,8 +6,15 @@ import GameOuput from '../components/game-output';
 
 import { rooms } from '../maps/one';
 import './game.scss';
+import { connect } from 'react-redux';
+import { AppState } from "../redux";
+import { GameState } from "../redux/models/game-model";
 
-function Game() {
+interface IProps {
+  win: GameState
+}
+
+const Game = (props: IProps) => {
   return (
     <div className="game">
       <div className='left-side'>
@@ -40,6 +47,9 @@ function Game() {
           max_slots: 6
         }}
       />
+        <div className={props.win.won ? 'win-status' : 'no-show'}>
+            You Won!!
+        </div>
       </div>
 
       <div className='game-ouput'>
@@ -49,4 +59,10 @@ function Game() {
   );
 }
 
-export default Game;
+const mstp = (state: AppState) => {
+  return {
+    win: state.game
+  }
+}
+
+export default connect(mstp)(Game);

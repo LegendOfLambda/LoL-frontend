@@ -18,6 +18,7 @@ import {
 } from '../../constants';
 import { Room } from '../../redux/models/map_model';
 import { SET_ROOM } from '../../redux/actions/types/map-types';
+import { SET_WIN } from '../../redux/actions/types/game-types';
 
 
 interface IProps {
@@ -25,7 +26,11 @@ interface IProps {
     geo: PlayerLocation;
 }
 
-class Player extends Component<IProps>{
+interface IState {
+    showWin: boolean
+}
+
+class Player extends Component<IProps, IState>{
 
     componentDidMount() {
         window.addEventListener('keydown', (e) => {
@@ -87,13 +92,13 @@ class Player extends Component<IProps>{
     }
 
     // checks to make sure the sprite is within the map bounds
-    observeBounds = (oldPos: number[], newPos: number[]): boolean => {
+    observeBounds = (newPos: number[]): boolean => {
         return ( newPos[0] >= 0 && newPos[0] <= MAP_BOUNDARY_WIDTH ) &&
                ( newPos[1] >=0 && newPos[1] <= MAP_BOUNDARY_HEIGHT)
     }
 
     // checks the next tile to see if it is a passable object
-    observeImpassable = (oldPos: number[], newPos: number[]): boolean => {
+    observeImpassable = (newPos: number[]): boolean => {
         const tile = this.props.room.tiles;
         let y: number;
         let x: number;
@@ -176,16 +181,26 @@ class Player extends Component<IProps>{
 
         // first statement will check to see if the position is out of bounds but still passable,
         // in order to test if it is going to be a doorway to next room
-        if(this.checkNewPositions(newPos) && this.observeImpassable(oldPos, newPos)) {
-                const newRoom = this.getNextRoom(direction)
+        if(this.checkNewPositions(newPos) && this.observeImpassable(newPos)) {
+                const newRoom = this.getNextRoom(direction);
                 const newPosition = this.getNextRoomPosition(direction, oldPos);
 
                 this.dispatchNewRoom(newRoom)
                 this.dispatchMove(location, direction, newPosition, walkIndex);
+                this.checkIfFinalRoom(newRoom)
 
         // any other time we just check to make sure we are not out of bounds and aren't walking into a wall
-        } else if(this.observeBounds(oldPos, newPos) && this.observeImpassable(oldPos, newPos)) {
+        } else if(this.observeBounds(newPos) && this.observeImpassable(newPos)) {
             this.dispatchMove(location, direction, newPos, walkIndex);
+        }
+    }
+
+    checkIfFinalRoom = (room: Room) => {
+        if(room.title === 'Great Hall') {
+            store.dispatch({
+                type: SET_WIN,
+                payload: {won: true}
+            })
         }
     }
 
