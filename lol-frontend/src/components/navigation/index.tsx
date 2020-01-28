@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import "./navigation.scss";
 
@@ -22,6 +22,21 @@ const TopBar = styled.div`
   }
 `;
 
+var navContainer = document.getElementById("navBar");
+
+// Get all buttons with class="nav" inside the container
+var navItems = document.getElementsByClassName("navItem");
+
+// Loop through the buttons and add the active class to the current/clicked button
+for (var i = 0; i < navItems.length; i++) {
+  navItems[i].addEventListener("click", function(this: { className: string }) {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+    console.log(this.className);
+  });
+}
+
 export default function NavBar() {
   return (
     <TopBar>
@@ -32,16 +47,41 @@ export default function NavBar() {
         </h1>
       </Link>
       <nav
+        id="navBar"
         style={{
           width: "45%",
           fontSize: ".9rem",
           textShadow: "1px 1px #000"
         }}
       >
-        <Link to="/story">Story</Link>
-        <Link to="/featured">Features</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Sign up</Link>
+        <NavLink
+          activeClassName="navbar active"
+          className="navItem"
+          to="/story"
+        >
+          Story
+        </NavLink>
+        <NavLink
+          activeClassName="navbar active"
+          className="navItem"
+          to="/featured"
+        >
+          Features
+        </NavLink>
+        <NavLink
+          activeClassName="navbar active"
+          className="navItem"
+          to="/login"
+        >
+          Login
+        </NavLink>
+        <NavLink
+          activeClassName="navbar active"
+          className="navItem"
+          to="/register"
+        >
+          Sign up
+        </NavLink>
       </nav>
     </TopBar>
   );
