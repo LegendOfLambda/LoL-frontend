@@ -1,4 +1,15 @@
 div {
+  /* Animate Background Image */
+
+  @keyframes aitf {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
   .h1 {
     text-decoration: none;
     color: #fff;
@@ -16,8 +27,31 @@ div {
       font-size: 1.8rem;
     }
   }
+
   h1 {
     font-size: 2.8rem;
+    letter-spacing: 0;
+    padding: 0.25em 0 0.325em;
+    display: block;
+    margin: 0 auto;
+    text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+
+    /* Clip Background Image */
+
+    background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png)
+      repeat-y;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Animate Background Image */
+
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 80s linear infinite;
+
+    /* Activate hardware acceleration for smoother animations */
+
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
   }
 
   nav {
@@ -41,27 +75,28 @@ div {
       &:hover {
         color: #bb1333;
       }
-      &:last-child {
-        color: #fff;
-        background: #bb1333;
-        border: 1px solid #fff;
-        border-radius: 10px;
-        box-shadow: 1px 1px 3px #000;
-        text-decoration: none;
-        text-shadow: 1px 1px #000;
-        padding: 1% 2%;
+
+      @media (max-width: 1200px) {
+        border: none;
+        box-shadow: none;
+        background: none;
         &:hover {
-          background: #9e102a;
-        }
-        @media (max-width: 1200px) {
-          border: none;
-          box-shadow: none;
           background: none;
-          &:hover {
-            background: none;
-            color: #bb1333;
-          }
+          color: #bb1333;
         }
+      }
+    }
+    .active {
+      color: #fff;
+      background: #bb1333;
+      border: 1px solid #fff;
+      border-radius: 10px;
+      box-shadow: 1px 1px 3px #000;
+      text-decoration: none;
+      text-shadow: 1px 1px #000;
+      padding: 1% 2%;
+      &:hover {
+        background: #9e102a;
       }
     }
   }
