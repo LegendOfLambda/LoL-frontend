@@ -5,9 +5,9 @@ import "./features.scss";
 
 function Features() {
   return (
-    <div className="Features-page">
+    <div className="features-page">
       <NavBar />
-      <h2>Features</h2>
+      <h2>Coming soon . . .</h2>
     </div>
   );
 }

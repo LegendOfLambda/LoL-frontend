@@ -7,7 +7,7 @@ function Story() {
   return (
     <div className="story-page">
       <NavBar />
-      <h2>Story</h2>
+      <h2>Coming soon . . .</h2>
     </div>
   );
 }

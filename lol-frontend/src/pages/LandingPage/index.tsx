@@ -72,15 +72,14 @@ function LandingPage() {
                 MUD adventure game with access to over 100+ rooms. The grump
                 wizard needs your help brave one! <br />
                 <br />
-                Can you manuver the dungeion and rescue the princess?
+                Can you manuver the dungeon and rescue the princess?
               </p>
+              <Link className="play-button" to="/play-now">
+                Start your journey
+              </Link>
             </div>
           </HeadingContent>
-          <HeadingContent>
-            <Link className="play-button" to="/play-now">
-              Start your journey
-            </Link>
-          </HeadingContent>
+          <HeadingContent></HeadingContent>
         </HeadingContainer>
       </div>
     </div>
