@@ -38,7 +38,8 @@ div {
 
     /* Clip Background Image */
 
-    background: url(../../assetts/animated_text_fill.png) repeat-y;
+    background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png)
+      repeat-y;
     -webkit-background-clip: text;
     background-clip: text;
 
@@ -72,7 +73,7 @@ div {
         font-size: 0.7rem;
       }
       &:hover {
-        color: #c12b47;
+        color: #bb1333;
       }
 
       @media (max-width: 1200px) {
@@ -81,21 +82,21 @@ div {
         background: none;
         &:hover {
           background: none;
-          color: #c12b47;
+          color: #bb1333;
         }
       }
     }
     .active {
       color: #fff;
-      background: #c12b47;
-      border: 2px solid #fff;
+      background: #bb1333;
+      border: 1px solid #fff;
       border-radius: 10px;
       box-shadow: 1px 1px 3px #000;
       text-decoration: none;
       text-shadow: 1px 1px #000;
       padding: 1% 2%;
       &:hover {
-        background: #b12740;
+        background: #9e102a;
       }
     }
   }
