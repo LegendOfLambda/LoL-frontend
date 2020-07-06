@@ -1,16 +1,22 @@
+body {
+  font-family: "PressStart2P";
+  font-size: 12px;
+  margin: 0;
+}
+
 .left-side {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .win-status {
-    position: absolute;
-    top: 250px;
-    left: 330px;
-    z-index: 9000;
-    font-size: 76px;
-    color: #fff;
+  position: absolute;
+  top: 250px;
+  left: 330px;
+  z-index: 9000;
+  font-size: 76px;
+  color: #fff;
 }
 
 .no-show {
-    display: none;
+  display: none;
 }
