@@ -64,7 +64,7 @@ export default function NavBar() {
         <NavLink
           activeClassName="navbar active"
           className="navItem"
-          to="/featured"
+          to="/features"
         >
           Features
         </NavLink>
